@@ -1,13 +1,11 @@
-import Calendar from 'react-input-calendar'
-import React, { Component } from 'react';
-import { Link } from 'react-router';
-
-import Nava from '../components1/nava';
+var React = require('react');
 var NoteActions = require('../actions/NoteActions');
 var NoteStore = require('../stores/NoteStore');
+var Form = require('./form');
 var Grid = require('./grid');
 
-var Reloj = React.createClass({
+
+var App1 = React.createClass({
     getInitialState: function() {
         return {
             notes: []
@@ -15,12 +13,10 @@ var Reloj = React.createClass({
     },
   render: function() {
         return (
-          <div>
-          <Nava />
-        <h3>Soy el Tiempo</h3>
-          <Calendar format='DD/MM/YYYY' date='4-12-2014' />
-          <Grid notes={this.state.notes} />
-          </div>
+            <div id="wrapper">
+                <Form />
+                <Grid notes={this.state.notes} />
+            </div>
         );
     },
 
@@ -35,4 +31,4 @@ var Reloj = React.createClass({
     }
 });
 
-module.exports = Reloj;
+module.exports = App1;

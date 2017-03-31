@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
+var NoteActions = require('../actions/NoteActions');
 import { Link } from 'react-router';
 
 var Grid = require('./grid');
@@ -27,49 +27,33 @@ var Form = React.createClass({
         });
     },
 
-    save: function() {
-        // Obtenemos los valores del formulario
-        var note = {
-            id: new Date().getTime(), // Generamos una id rápida
-            title: ReactDOM.findDOMNode(this.refs.title).value,
-            text: ReactDOM.findDOMNode(this.refs.text).value
-        };
+    save: function(e) {
+       e.preventDefault();
 
-        // Leemos la lista de notas guardadas o creamos una vacía
-        var notes = window.localStorage.getItem('notes');
+       // Obtenemos los valores del formulario
+       var note = {
+           title: ReactDOM.findDOMNode(this.refs.title).value,
+           text: ReactDOM.findDOMNode(this.refs.text).value
+       };
 
-        if (notes === null) {
-            notes = []; // Creamos una nueva lista vacía
-        } else {
-            notes = JSON.parse(notes); // Decodificamos la cadena
-        }
+       // Solicitamos la creación de la nota
+       NoteActions.createNote(note.title, note.text);
 
-        // Insertamos la nueva nota al principio de la lista
-        notes.unshift(note);
+       // Vaciamos el formulario
+       ReactDOM.findDOMNode(this.refs.title).value = '';
+       ReactDOM.findDOMNode(this.refs.text).value = '';
 
-        // Codificamos la lista como cadena de texto
-        notes = JSON.stringify(notes);
-
-        // Guardamos en localStorage
-        window.localStorage.setItem('notes', notes);
-
-        // Vaciamos el formulario
-        ReactDOM.findDOMNode(this.refs.title).value = '';
-        ReactDOM.findDOMNode(this.refs.text).value = '';
-
-        // Y finalmente lo cerramos
-        this.close();
-    },
-
+       // Y finalmente lo cerramos
+       this.close();
+   },
     render: function() {
         return (
           <form className={"addnote" + (this.state.open ? ' open' : '')} onFocus={this.open} onSubmit={this.save}>
                 <input className="addnote-title" type="text" placeholder="Título" ref="title" />
-                <textarea className="addnote-text" placeholder="Añadir nota" ref="text" />
-                <div className="addnote-toolbar">
-                    <button>Hecho</button>
-                    <a className="addnote-btn-list" />
-                    <Grid />
+                  <textarea className="addnote-text" placeholder="Añadir nota" ref="text" />
+                    <div className="addnote-toolbar">
+                      <button>Hecho</button>
+                        <a className="addnote-btn-list" />
                 </div>
             </form>
         );

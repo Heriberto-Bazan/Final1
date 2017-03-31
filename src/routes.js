@@ -8,7 +8,7 @@ import Configura from './components/configura';
 import Sucursal from './components/sucursal';
 import Formulario from './components/formulario';
 import Reloj from './components/reloj';
-import Form from './components/form';
+import App1 from './components/app1';
 
 import { Jumbotron } from 'react-bootstrap';
 
@@ -46,7 +46,7 @@ export default (
     </Route>
     <Route path="/reloj" component={Reloj}>
     </Route>
-    <Route path="/form" component={Form}>
+    <Route path="/app1" component={App1}>
     </Route>
   </Router>
 );
