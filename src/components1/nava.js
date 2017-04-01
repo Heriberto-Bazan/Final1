@@ -22,7 +22,10 @@ export default class Nava extends Component {
                 <a className="nav-link" href="/reloj">Reloj</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/app1">Redux</a>
+                <a className="nav-link" href="/app1">Notas</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/hellonameinput">Notas</a>
               </li>
               <ul className="nav navbar-nav navbar-right">
               </ul>

@@ -9,6 +9,7 @@ import Sucursal from './components/sucursal';
 import Formulario from './components/formulario';
 import Reloj from './components/reloj';
 import App1 from './components/app1';
+import HelloNameInput from './components/hellonameinput';
 
 import { Jumbotron } from 'react-bootstrap';
 
@@ -47,6 +48,8 @@ export default (
     <Route path="/reloj" component={Reloj}>
     </Route>
     <Route path="/app1" component={App1}>
+    </Route>
+    <Route path="/hellonameinput" component={HelloNameInput}>
     </Route>
   </Router>
 );

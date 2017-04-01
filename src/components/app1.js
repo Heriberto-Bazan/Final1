@@ -3,7 +3,7 @@ var NoteActions = require('../actions/NoteActions');
 var NoteStore = require('../stores/NoteStore');
 var Form = require('./form');
 var Grid = require('./grid');
-
+import Nava from '../components1/nava';
 
 var App1 = React.createClass({
     getInitialState: function() {
@@ -13,9 +13,12 @@ var App1 = React.createClass({
     },
   render: function() {
         return (
+          <div>
+          <Nava />
             <div id="wrapper">
                 <Form />
                 <Grid notes={this.state.notes} />
+            </div>
             </div>
         );
     },
